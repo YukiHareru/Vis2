@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title":"World Footprint",
+  "data": {
+    "url": "https://raw.githubusercontent.com/YukiHareru/Vega-lite/main/data/selected.csv"
+  },
+  "width": 800,
+  "height": 300,
+  "params": [
+    {
+      "name": "Region",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Asia-Pacific",
+          "North America",
+          "European Union"
+        ],
+        "labels": [
+          "Show All",
+          "Asia-Pacific",
+          "North America",
+          "European Union"
+        ],
+        "name": "Region Selection: "
+      }
+    }
+  ],
+  "transform": [{"filter": "Region == null || datum.Region == Region"}],
+  "encoding": {
+    "x": {"type": "nominal", "field": "Country", "axis": {"title": "Country","labelAngle": 45}},
+    "tooltip": [
+      {"field": "Country", "type": "nominal"},
+      {"field": "CroplandFootprint", "type": "quantitative", "format": ","},
+      {"field": "GrazingFootprint", "type": "quantitative", "format": ","},
+      {"field": "ForestFootprint", "type": "quantitative", "format": ","},
+      {"field": "CarbonFootprint", "type": "quantitative", "format": ","},
+      {"field": "FishFootprint", "type": "quantitative", "format": ","}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "color": "#205374"},
+      "encoding": {
+        "y": {
+          "field": "CarbonFootprint",
+          "type": "quantitative",
+          "title": "FootPrint"
+        }
+      }
+    },
+    {
+      "mark": {"type": "bar", "color": "#27A09E"},
+      "encoding": {"y": {"field": "CroplandFootprint", "type": "quantitative"}}
+    },
+    {
+      "mark": { "type": "bar", "color": "#30CE88"},
+      "encoding": {"y": {"field": "ForestFootprint", "type": "quantitative"}}
+    },
+    {
+      "mark": { "type": "bar", "color": "#7DE393"},
+      "encoding": {"y": {"field": "GrazingFootprint", "type": "quantitative"}}
+    },
+    {
+      "mark": {"type": "bar", "color": "#BDF2D8"},
+      "encoding": {"y": {"field": "FishFootprint", "type": "quantitative"}}
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "CroplandFootprint", "type": "quantitative", "format": ","},
+          {"field": "GrazingFootprint", "type": "quantitative", "format": ","},
+          {"field": "ForestFootprint", "type": "quantitative", "format": ","},
+          {"field": "CarbonFootprint", "type": "quantitative", "format": ","},
+          {"field": "FishFootprint", "type": "quantitative", "format": ","}
+        ]
+      }
+  ],
+  "config": {"background": "#F3FAF9"}
+}

@@ -1,0 +1,112 @@
+{
+  "$sIDema": "https://vega.github.io/sIDema/vega/v5.json",
+  "width": 200,
+  "height": 500,
+  "padding": 5,
+  "signals": [
+    {"name": "startAngle", "value": 0},
+    {"name": "endAngle", "value": 4},
+    {"name": "padAngle", "value": 0},
+    {"name": "bandPadding", "value": 0.15},
+    {"name": "innerRadius", "value": 80},
+    {"name": "cornerRadius", "value": 80}
+  ],
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {
+          "% Healthy ecological environment": 28.19,
+          "% ecological reserve": 0,
+          "ID": 1
+        },
+        {
+          "% Healthy ecological environment": 0,
+          "% ecological reserve": 71.81,
+          "ID": 2
+        }
+      ],
+      "transform": [
+        {
+          "type": "fold",
+          "fields": ["% Healthy ecological environment", "% ecological reserve"]
+        },
+        {
+          "type": "formula",
+          "as": "c",
+          "initonly": true,
+          "expr": "if(datum.key==='% Healthy ecological environment','#3cb043',if(datum.key==='% ecological reserve','#d0312d','red'))"
+        },
+        {
+          "type": "stack",
+          "groupby": ["ID"],
+          "field": "value",
+          "as": ["r0", "r1"]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "IDbands",
+      "type": "band",
+      "paddingInner": {"signal": "bandPadding"},
+      "range": [{"signal": "innerRadius"}, {"signal": "width/2"}],
+      "domain": {"data": "table", "field": "ID"}
+    },
+    {
+      "name": "angle",
+      "type": "linear",
+      "range": [{"signal": "startAngle"}, {"signal": "endAngle"}],
+      "nice": true,
+      "zero": true,
+      "domain": {"data": "table", "field": "r1"}
+    }
+  ],
+  "marks": [
+    {
+      "type": "arc",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {"x": {"signal": "width/2"}, "y": {"signal": "height / 2"}},
+        "update": {
+          "fill": {"field": "c"},
+          "startAngle": {"scale": "angle", "field": "r0"},
+          "endAngle": {"scale": "angle", "field": "r1"},
+          "padAngle": {"signal": "padAngle"},
+          "innerRadius": {"scale": "IDbands", "field": "ID"},
+          "outerRadius": {
+            "scale": "IDbands",
+            "field": "ID",
+            "offset": {"scale": "IDbands", "band": 1}
+          },
+          "cornerRadius": {"signal": "cornerRadius"},
+          "tooltip": {"signal": "datum.key+':  '+datum.value+'%'"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "fill": {"value": "#2c7493"},
+          "text": {
+            "value": [
+              "Only 28.19% of the ",
+              "countries having a balanced",
+              " ecological environment",
+              "",
+              "what’s amazing is that 78% ",
+              "of countries have severely overdrawn ",
+              "ecological resources."
+            ]
+          },
+          "fontSize": {"value": 17},
+          "x": {"value": -80},
+          "y": {"value": 50}
+        }
+      }
+    }
+  ],
+  "config": {"view": {"strokeOpacity": 1, "stroke": "black"}}
+}

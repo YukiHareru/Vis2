@@ -1,0 +1,11 @@
+﻿Country,Region,PopulationInmillions,HDI,GDPperCapita,CroplandFootprint,GrazingFootprint,ForestFootprint,CarbonFootprint,FishFootprint,TotalEcologicalFootprint,Cropland,GrazingLand,ForestLand,FishingWater,UrbanLand,TotalBiocapacity,BiocapacityDeficitOrReserve,EarthsRequired,CountriesRequired,DataQuality,Total?Ecological?Footprint?per?1?billion?population,Footprint
+Japan,Asia-Pacific,127.25,0.89,"$46,201.60",0.53,0.1,0.27,3.69,0.33,5.02,0.16,0,0.35,0.1,0.1,0.72,-4.3,2.9,7.01,6,39.44990177,
+Italy,European Union,60.92,0.87,"$38,412.00",0.91,0.32,0.42,2.77,0.12,4.61,0.58,0.04,0.33,0.06,0.06,1.08,-3.53,2.66,4.28,6,75.67301379,
+United Kingdom,European Union,63.03,0.9,"$40,980.50",0.82,0.28,0.45,3.14,0.08,4.94,0.6,0.12,0.12,0.3,0.18,1.32,-3.62,2.85,3.76,6,78.3753768,
+China,Asia-Pacific,1408.04,0.72,"$5,560.94",0.55,0.13,0.19,2.32,0.08,3.38,0.46,0.1,0.22,0.04,0.12,0.94,-2.44,1.95,3.59,6,2.400499986,
+India,Asia-Pacific,1236.69,0.6,"$1,513.85",0.34,0.01,0.14,0.61,0.02,1.16,0.35,0,0.02,0.03,0.05,0.45,-0.71,0.67,2.55,6,0.937987693,
+United States of America,North America,317.5,0.91,"$49,725.00",1.13,0.3,0.67,5.9,0.12,8.22,1.49,0.28,1.57,0.33,0.09,3.76,-4.46,4.75,2.19,6,25.88976378,
+France,European Union,63.98,0.89,"$45,430.30",1.23,0.27,0.53,2.71,0.19,5.14,1.67,0.16,0.96,0.11,0.21,3.11,-2.04,2.97,1.66,6,80.3376055,
+Malaysia,Asia-Pacific,29.24,0.77,"$10,252.60",0.67,0.12,0.38,2.1,0.36,3.71,0.75,0.01,0.73,0.84,0.07,2.41,-1.3,2.14,1.54,3B,126.880985,
+Australia,Asia-Pacific,23.05,0.93,"$66,604.20",2.68,0.63,0.89,4.85,0.11,9.31,5.42,5.81,2.01,3.19,0.14,16.57,7.26,5.37,0.56,5,403.9045553,
+New Zealand,Asia-Pacific,4.46,0.91,"$37,488.30",0.63,0.23,1.08,2.84,0.7,5.6,0.51,2.7,5.95,0.86,0.13,10.14,4.54,3.23,0.55,3B,1255.605381,

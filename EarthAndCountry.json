@@ -1,0 +1,178 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/YukiHareru/Vega-lite/main/data/selected.csv"
+  },
+  "title": {
+    "text": "Country Resource required And Earth resource Required",
+    "color": "#000000",
+    "align":"left",
+    "fontSize": 20,
+    "font": "Arial",
+    "offset": 30,
+    "dx": 280
+  },
+  "concat": [
+    {
+      "layer": [
+        {
+          "width": 450,
+          "height": 500,
+          "mark": {
+            "type": "circle",
+            "opacity": 0.5,
+            "strokeWidth": 1,
+            "size": 800,
+            "orient": "vertical"
+          },
+          "encoding": {
+            "color": {"field": "Country"},
+            "opacity": {
+              "condition": {"selection": "series", "value": 1},
+              "value": 0.2
+            }
+          },
+          "selection": {
+            "series": {
+              "type": "multi",
+              "encodings": ["color"],
+              "on": "click",
+              "bind": "legend"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "circle",
+            "opacity": 0.3,
+            "strokeWidth": 1,
+            "size": 70,
+            "orient": "vertical"
+          },
+          "encoding": {
+            "color": {"field": "Country", "scale": {"range": ["#30CE88"]}},
+            "opacity": {
+              "condition": {"selection": "series", "value": 1},
+              "value": 0.01
+            }
+          }
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "CountriesRequired",
+          "type": "quantitative",
+          "scale": {"domain": [0, 7.5]},
+          "axis": {
+            "labelFontSize": 12,
+            "grid": false,
+            "labelAngle": -45,
+            "titleFontSize": 0
+          }
+        },
+        "y": {"field": "Country", "type": "nominal"},
+        "size": {
+          "field": "HDI",
+          "type": "quantitative",
+          "scale": {"range": [0, 1500]}
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "CountriesRequired", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "layer": [
+        {
+          "width": 450,
+          "height": 500,
+          "mark": {
+            "type": "line",
+            "opacity": 0.5,
+            "strokeWidth": 1,
+            "size": 800,
+            "orient": "vertical"
+          },
+          "encoding": {
+            "color": {"field": "Country"},
+            "opacity": {
+              "condition": {"selection": "series", "value": 1},
+              "value": 0.2
+            }
+          },
+          "selection": {
+            "series": {
+              "type": "multi",
+              "encodings": ["color"],
+              "on": "click",
+              "bind": "legend"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "opacity": 0.5,
+            "strokeWidth": 1,
+            "size": 70,
+            "orient": "vertical"
+          },
+          "encoding": {
+            "color": {"field": "Country", "scale": {"range": ["#30CE88"]}},
+            "opacity": {
+              "condition": {"selection": "series", "value": 1},
+              "value": 0.01
+            }
+          }
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "HDI",
+          "type": "quantitative",
+          "axis": {
+            "labelFontSize": 12,
+            "grid": false,
+            "labelAngle": -45,
+            "titleFontSize": 0
+          }
+        },
+        "y": {"field": "EarthsRequired", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "EarthsRequired", "type": "quantitative", "format": ","}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#F3FAF9",
+    "width": 1000,
+    "height": 500,
+    "axis": {
+      "grid": true,
+      "gridOpacity": 0,
+      "gridColor": "grey",
+      "domain": false,
+      "ticks": false,
+      "labelColor": "#000000",
+      "titleColor": "#000000",
+      "labelFontSize": 15,
+      "titleFontSize": 12,
+      "labelPadding": 10
+    },
+    "view": {"strokeOpacity": 0},
+    "legend": {
+      "labelColor": "#000000",
+      "titleColor": "#000000",
+      "labelFontSize": 15,
+      "titleFontSize": 16,
+      "orient": "left",
+      "symbolBaseFillColor": "#30CE88",
+      "labelSeparation": 4,
+      "symbolSize": 10
+    },
+    "concat": {"spacing": 50}
+  }
+}

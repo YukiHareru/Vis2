@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Biocapacity Deficit Or Reserve of each country (2016)",
+  "height":500,
+  "width":200,
+  "description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/YukiHareru/Vega-lite/main/data/selected.csv"
+  },
+  "encoding": {
+    "y": {
+      "field": "Country",
+      "type": "nominal",
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelAngle": 0,
+        "labelPadding": 4
+      }
+    },
+    "x": {
+      "field": "BiocapacityDeficitOrReserve",
+      "type": "quantitative",
+      "axis": {
+        "gridColor": {
+          "condition": {"test": "datum.value === 0", "value": "black"},
+          "value": "#98FB98"
+        }
+      }
+    }
+  },
+  "layer": [
+    {"mark": "bar", "encoding": {"color": {"value": "#66CDAA"}}},
+    {
+      "mark": {
+        "type": "text",
+        "align": {"expr": "datum.b < 0 ? 'right' : 'left'"},
+        "dx": {"expr": "datum.b < 0 ? -2 : 2"}
+      },
+      "encoding": {
+        "text": {"field": "BiocapacityDeficitOrReserve", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {"background": "#F3FAF9"}
+}
